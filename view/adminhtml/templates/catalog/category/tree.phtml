@@ -1,0 +1,31 @@
+<div id="category-tree">
+    <?= $block->getTreeHtml() ?>
+</div>
+<script>
+    var src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    require([
+        "jquery",
+        "jquery/ui"
+    ], function ($) {
+        if ($('div#category-tree').find('ul').size()) {
+            $('div#category-tree').find('ul').attr('style', 'padding:0px 0px 0px 20px');
+            $('div#category-tree').find('li').attr('class', 'x-tree-node');
+            $('div#category-tree').find('li').prepend('<span style="padding-right:5px" ' +
+                'class="x-tree-node-el folder active-category x-tree-node-leaf">' +
+                '<span id="category-tree-img" class="x-tree-node-indent"><img src="'+src+'" class="x-tree-icon"></span>' +
+                '<img src="'+src+'" class="x-tree-ec-icon x-tree-elbow">' +
+                '<img src="'+src+'" class="x-tree-node-icon" unselectable="on"></span>');
+            $('div#category-tree').find('ul').sortable();
+            $('div#category-tree').show();
+            $('button#save').click(function(){
+                var dto = {};
+                $('div#category-tree').find('li[data-item-id]').each(function(k,v){
+                    $(v).attr('data-sort-order', k);
+                    dto[$(v).attr('data-item-id')] = {'category_id': $(v).attr('data-item-id'),
+                        'parent_id': $(v).attr('data-parent-id'), 'sort_order': k}
+                });
+                $('input[name="menu_structure"]').val(JSON.stringify(dto)).change();
+            });
+        }
+    });
+</script>

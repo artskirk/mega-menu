@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="kirkor_megamenu_items" resource="default" engine="innodb" comment="MegaMenu Table">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Menu Title"/>
+        <column xsi:type="varchar" name="code" nullable="false" length="255" comment="Menu String Identifier"/>
+        <column xsi:type="mediumtext" name="css_classes" nullable="true" comment="CSS Classes"/>
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="false" nullable="false" identity="false"
+                comment="Store ID"/>
+        <column xsi:type="smallint" name="website_id" padding="5" unsigned="false" nullable="false" identity="false"
+                comment="Website ID"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Menu Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="KIRKOR_MEGAMENU_ITEMS_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+    <table name="kirkor_megamenu_categories" resource="default" engine="innodb" comment="Menu Items Table">
+        <column xsi:type="smallint" name="category_id" padding="6" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="smallint" name="parent_id" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="Parent Category Id"/>
+        <column xsi:type="smallint" name="menu_id" padding="6" unsigned="true" nullable="true" identity="false"
+                comment="Menu ID"/>
+        <column xsi:type="smallint" name="cms_page" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="CMS Page Identifier"/>
+        <column xsi:type="smallint" name="sort_order" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="Sort Order"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Item Title"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Item Active"/>
+        <column xsi:type="varchar" name="url" nullable="false" length="255" comment="Item Url"/>
+        <column xsi:type="mediumtext" name="css_classes" nullable="true" comment="CSS Classes"/>
+        <column xsi:type="smallint" name="new_tab" padding="6" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Open in new tab"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="KIRKOR_MEGAMENU_CATEGORIES_MENU_ID_KIRKOR_MEGAMENU_ITEMS_ID" table="kirkor_megamenu_categories"
+                    column="menu_id" referenceTable="kirkor_megamenu_items" referenceColumn="id" onDelete="CASCADE"/>
+        <index referenceId="KIRKOR_MEGAMENU_CATEGORIES_CATEGORY_ID" indexType="btree">
+            <column name="category_id"/>
+        </index>
+    </table>
+</schema>

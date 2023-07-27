@@ -1,0 +1,17 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Kirkor\MegaMenu\Block\Widget\Menu" id="megamenu_widget">
+        <label>Megamenu</label>
+        <description>This is the Megamenu extension widget</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Label</label>
+            </parameter>
+            <parameter name="menu" xsi:type="select" visible="true"
+                       source_model="Kirkor\MegaMenu\Model\Config\Source\Options">
+                <!--Kirkor\MegaMenu\Model\Config\MenuOptions-->
+                <label translate="true">Select the Menu</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

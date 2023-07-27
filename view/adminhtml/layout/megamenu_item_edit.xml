@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="left">
+            <block class="Kirkor\MegaMenu\Block\Adminhtml\Category\Tree" name="category.tree" template="Kirkor_MegaMenu::catalog/category/tree.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <uiComponent name="megamenu_item_form" />
+        </referenceContainer>
+    </body>
+</page>

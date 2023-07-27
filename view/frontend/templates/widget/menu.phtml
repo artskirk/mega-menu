@@ -1,0 +1,10 @@
+<?php
+/** @var \Magento\Framework\View\TemplateEngineInterface $this */
+/** @var \Kirkor\MegaMenu\Block\Widget\Menu $block */
+/** @var \Magento\Csp\Api\InlineUtilInterface $csp */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<h1 style="color: #faa21a;"><?= $escaper->escapeHtml($block->getData('title')) ?></h1>
+<h2><?= $escaper->escapeHtml(__('Selected menu is: ')) ?><?= $escaper->escapeHtml($block->getData('menu')) ?></h2>

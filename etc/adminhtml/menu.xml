@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kirkor_MegaMenu::megamenu" title="MegaMenu" translate="title" module="Kirkor_MegaMenu" sortOrder="30" resource="Kirkor_MegaMenu::megamenu"/>
+        <add id="Kirkor_MegaMenu::megamenu_manage" title="All Menus" translate="title" module="Kirkor_MegaMenu" sortOrder="10" parent="Kirkor_MegaMenu::megamenu" action="megamenu/" resource="Kirkor_MegaMenu::manage"/>
+        <add id="Kirkor_MegaMenu::megamenu_categories" title="Menu Items" translate="categories" module="Kirkor_MegaMenu" sortOrder="20" parent="Kirkor_MegaMenu::megamenu" action="megamenu/index/categories/" resource="Kirkor_MegaMenu::categories"/>
+    </menu>
+</config>
